@@ -58,9 +58,10 @@ router.get("/:companyName", function(request, response, next) {
     serverModel.find({ companyName: companyNameVal }, function(err, res) {
         if (err) {
             response.status(500).json(err);
+            return;
         }
 
-        if (!res) {
+        if (!res || res.length === 0) {
             response.status(200).json("Not Found!");
         } else {
             console.log("get servers stats of a single company! ");
