@@ -95,6 +95,7 @@ class SignUp extends Component {
                 <div>
                   <RaisedButton
                     label="Create Account"
+                    primary={true}
                     type="submit"
                   />
                 </div>
@@ -119,10 +120,16 @@ class SignUp extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    login: state.login
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     signUp: user => dispatch(actions.signUp(user))
   }
 }
 
-export default connect(undefined, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

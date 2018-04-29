@@ -18,9 +18,10 @@ class Status extends Component {
   }
 
   render() {
+    const { login } = this.props;
     return (
       <div>
-        <div></div>
+        <div>{login.info.companyName}</div>
         <Table>
           <TableHeader>
             <TableHeaderColumn>Appliance Server</TableHeaderColumn>
@@ -42,7 +43,8 @@ class Status extends Component {
 
 const mapStateToProps = state => {
   return {
-    servers: state.servers
+    servers: state.servers,
+    login: state.login
   };
 };
 

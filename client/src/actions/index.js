@@ -20,7 +20,7 @@ const getServersFailure = err => {
   };
 };
 
-const API_URL = '';
+const API_URL = '/api/';
 
 export const getServers = () => {
   return dispatch => {
@@ -139,9 +139,10 @@ const loginRequest = () => {
   }
 }
 
-const loginSuccess = () => {
+const loginSuccess = info => {
   return {
-    type: 'LOGIN_SUCCESS'
+    type: 'LOGIN_SUCCESS',
+    info
   };
 };
 
@@ -156,12 +157,16 @@ export const login = () => {
   return (dispatch, getState) => {
     dispatch(loginRequest());
     axios({
-      url: API_URL,
+      url: API_URL + 'authentication',
       method: 'post',
       data: getState().user
     })
       .then(response => {
-        dispatch(loginSuccess());
+        if (response.status === 200) {
+          dispatch(loginSuccess(response.data));
+        } else {
+          dispatch(loginFailure(response.data));
+        }
       })
       .catch(err => {
         dispatch(loginFailure(err));
@@ -193,7 +198,7 @@ export const signUp = user => {
   return dispatch => {
     dispatch(signUpRequest(user));
     axios({
-      url: API_URL,
+      url: API_URL + 'user',
       method: 'post',
       data: user
     })

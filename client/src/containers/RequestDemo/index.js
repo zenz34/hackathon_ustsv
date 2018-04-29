@@ -145,7 +145,9 @@ class RequestDemo extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  uploadDemo: messages => dispatch(actions.uploadDemo(messages))
-}
+  return {
+    uploadDemo: messages => dispatch(actions.uploadDemo(messages))
+  }; 
+};
 
 export default connect(undefined, mapDispatchToProps)(RequestDemo);

@@ -3,6 +3,10 @@ const initState = {
     email: '',
     password: ''
   },
+  info: {
+    companyName: '',
+    serverStatus: []
+  },
   isLogging: false,
   success: false,
   err: ''
@@ -35,6 +39,7 @@ const login = (state = initState, action) => {
       return {
         ...state,
         isLogging: false,
+        info: action.info,
         success: true,
         err: ''
       };
