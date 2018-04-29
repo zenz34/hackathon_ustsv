@@ -6,9 +6,9 @@ const env = require("./config/env");
 const routes = require("./routes");
 const bodyParser = require("body-parser");
 const app = express();
-
 // call the init function in ./config/database.js to setup the connection
 // to mongodb
+
 mongodbConnect();
 
 /*===========================
@@ -35,11 +35,11 @@ search through users collection,
         response 400? Not Found
 
 */
-app.get("/api/authentication", function(req, res) {
-    req.body;
 
-    res.send(responseText);
-});
+// function(req, res) {
+//     login_process(req.body.email, req.body.password);
+//     next();
+// });
 
 /*=====  End of Middleware  ======*/
 
@@ -50,8 +50,9 @@ app.get("/api/authentication", function(req, res) {
 app.use("/api/users", routes.users);
 app.use("/api/serversstats", routes.serversStats);
 app.use("/api/availableserversvers", routes.availabeServerVer);
-// app.use('/users', routes.users);
-// app.use('/books', routes.books);
+app.use("/api/authentication", routes.authentication);
+app.use("/api/message", routes.message);
+app.use("/api/demorequest", routes.demoReq);
 
 /*=====  End of Routes  ======*/
 
