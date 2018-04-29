@@ -58,7 +58,7 @@ router.post("/", function(request, response, err) {
 
                         console.log(documents[0]);
                         if (!documents || documents.length === 0) {
-                            response.status(200).json("Not Found!");
+                            response.status(205).json("Not Found!");
                         } else {
                             response.status(200).json(documents[0]);
                         }

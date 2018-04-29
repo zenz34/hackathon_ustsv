@@ -19,7 +19,7 @@ router.get("/:companyName", function(request, response, next) {
         }
 
         if (!res || res.length === 0) {
-            response.status(200).json("Not Found!");
+            response.status(205).json("Not Found!");
         } else {
             console.log("get available servers versions of a single company! ");
             console.log(res);

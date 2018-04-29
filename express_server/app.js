@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const app = express();
 // call the init function in ./config/database.js to setup the connection
 // to mongodb
+
 mongodbConnect();
 
 /*===========================
